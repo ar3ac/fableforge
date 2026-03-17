@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "title": "Updated Title",
+        "content": "Python \u00e8 un linguaggio di programmazione interpretato, di alto livello e general-purpose. La sua filosofia di design enfatizza la leggibilit\u00e0 del codice con l'uso di un'indentazione significativa.",
+        "date": "2023-10-15"
+    },
+    {
+        "id": 2,
+        "title": "I benefici del REST API",
+        "content": "REST (Representational State Transfer) \u00e8 uno stile architetturale per sistemi ipermediali distribuiti. Permette una comunicazione scalabile tra client e server tramite protocollo HTTP.",
+        "date": "2023-11-02"
+    },
+    {
+        "id": 3,
+        "title": "Docker per Principianti",
+        "content": "Docker \u00e8 una piattaforma open source che automatizza il deployment delle applicazioni all'interno di contenitori software, fornendo un livello aggiuntivo di astrazione e automazione.",
+        "date": "2023-12-10"
+    },
+    {
+        "id": 4,
+        "title": "Machine Learning vs Deep Learning",
+        "content": "Sebbene spesso usati in modo intercambiabile, il Deep Learning \u00e8 un sottoinsieme del Machine Learning che utilizza reti neurali artificiali multistrato per risolvere problemi complessi.",
+        "date": "2024-01-05"
+    },
+    {
+        "id": 5,
+        "title": "Sicurezza nel Cloud",
+        "content": "La sicurezza nel cloud computing coinvolge una vasta gamma di policy, tecnologie e controlli distribuiti per proteggere dati, applicazioni e infrastrutture associate.",
+        "date": "2024-02-20"
+    },
+    {
+        "id": 8,
+        "title": "New Article",
+        "content": "This is a new article.",
+        "date": "2024-06-01"
+    }
+]
