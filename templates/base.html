@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FableForge{% endblock %}</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        nav { background: #333; color: #fff; padding: 1rem; }
+        nav a { color: #fff; text-decoration: none; margin-right: 15px; }
+        nav a:hover { text-decoration: underline; }
+        nav span { margin-right: 15px; color: #aaa; }
+        main { padding: 20px; max-width: 800px; margin: 0 auto; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        {% if request.cookies.get("username") %}
+            <span>Admin: {{ request.cookies.get("username") }}</span>
+            <a href="/admin/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+        {% endif %}
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

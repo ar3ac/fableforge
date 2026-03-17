@@ -1,3 +1,9 @@
-<h2>{{ article.title }}</h2>
-<p>Date: {{ article.date }}</p>
-<p>{{ article.content }}</p>
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - FableForge{% endblock %}
+
+{% block content %}
+    <h2>{{ article.title }}</h2>
+    <p>Date: {{ article.date }}</p>
+    <p>{{ article.content }}</p>
+{% endblock %}

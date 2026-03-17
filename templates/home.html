@@ -1,3 +1,14 @@
-{% for article in articles %}
-    <h2><a href="/article/{{ article.id }}">{{ article.title }}</a> - {{ article.date }}</h2>
-{% endfor %}
+{% extends "base.html" %}
+
+{% block title %}Home - FableForge{% endblock %}
+
+{% block content %}
+    <h1>FableForge</h1>
+    {% if articles %}
+        {% for article in articles %}
+            <h2><a href="/article/{{ article.id }}">{{ article.title }}</a> - {{ article.date }}</h2>
+        {% endfor %}
+    {% else %}
+        <p>Nessun articolo disponibile.</p>
+    {% endif %}
+{% endblock %}
