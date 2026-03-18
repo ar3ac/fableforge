@@ -5,28 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}FableForge{% endblock %}</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-        nav { background: #333; color: #fff; padding: 1rem; }
-        nav a { color: #fff; text-decoration: none; margin-right: 15px; }
-        nav a:hover { text-decoration: underline; }
-        nav span { margin-right: 15px; color: #aaa; }
-        main { padding: 20px; max-width: 800px; margin: 0 auto; }
+        body { font-family: system-ui, sans-serif; margin: 0; padding: 0; line-height: 1.6; background: #f4f7fb; }
+        main { padding: 18px; max-width: 900px; margin: 0 auto; background: #fff; min-height: 100vh; }
+        h1 { margin: 0 0 0.2rem; font-size: 1.9rem; }
+        nav { margin-top: 0.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+        nav a, nav span { font-size: 0.95rem; }
+        nav a { text-decoration: none; color: #1f4b8f; padding: 0.28rem 0.55rem; border-radius: 4px; border: 1px solid transparent; }
+        nav a:hover { background: #eef4ff; border-color: #c8dbff; }
+        .admin-pill { font-size: 0.85rem; background: #e8f0ff; color: #14408c; border-radius: 999px; padding: 0.2rem 0.5rem; border: 1px solid #deebff; }
         .error { color: red; }
+        table a { color: #1f4b8f; text-decoration: none; padding: 0.28rem 0.55rem; border-radius: 4px; border: 1px solid transparent;}
+        table a:hover { background: #eef4ff; border-color: #c8dbff; }
     </style>
 </head>
 <body>
+    <main>
+    <h1>FableForge</h1>
     <nav>
         <a href="/">Home</a>
-        {% if request.cookies.get("username") %}
-            <span>Admin: {{ request.cookies.get("username") }}</span>
-            <a href="/admin/dashboard">Dashboard</a>
+        {% if request.cookies.get("username") == "admin" %}
+            <span class="admin-pill">Logged as Admin</span>
+            <a href="/admin/add">+ Add</a>
             <a href="/logout">Logout</a>
         {% else %}
             <a href="/login">Login</a>
         {% endif %}
     </nav>
-    <main>
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
     </main>
 </body>
 </html>

@@ -77,6 +77,19 @@ def admin_dashboard(request: Request):
     )
 
 
+@app.get("/admin/add")
+def admin_add(request: Request):
+    if not get_current_admin(request):
+        return RedirectResponse(url="/login", status_code=303)
+    return templates.TemplateResponse(
+        "login.html",
+        {
+            "request": request,
+            "error": "Placeholder: implementa qui la form per aggiungere articolo",
+        },
+    )
+
+
 @app.get("/logout")
 def logout(request: Request):
     response = RedirectResponse(url="/", status_code=303)

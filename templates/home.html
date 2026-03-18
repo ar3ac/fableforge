@@ -3,11 +3,24 @@
 {% block title %}Home - FableForge{% endblock %}
 
 {% block content %}
-    <h1>FableForge</h1>
+
     {% if articles %}
-        {% for article in articles %}
-            <h2><a href="/article/{{ article.id }}">{{ article.title }}</a> - {{ article.date }}</h2>
-        {% endfor %}
+
+        <table border="0" cellpadding="6" cellspacing="0">
+
+            <tbody>
+                {% for article in articles %}
+                    <tr style="text-decoration: none; color: #034e9e">
+                        <td><a href="/article/{{ article.id }}">{{ article.title }}</a></td>
+                        <td>{{ article.date }}</td>
+                        {% if request.cookies.get("username") == "admin" %}
+                            <td><a href="/admin/edit/{{ article.id }}">Edit</a></td>
+                            <td><a href="/admin/delete/{{ article.id }}">Delete</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% else %}
         <p>Nessun articolo disponibile.</p>
     {% endif %}
