@@ -10,18 +10,22 @@
 
             <tbody>
                 {% for article in articles %}
-                    <tr style="text-decoration: none; color: #034e9e">
+                    <tr>
                         <td><a href="/article/{{ article.id }}">{{ article.title }}</a></td>
                         <td>{{ article.date }}</td>
                         {% if request.cookies.get("username") == "admin" %}
                             <td><a href="/admin/edit/{{ article.id }}">Edit</a></td>
-                            <td><a href="/admin/delete/{{ article.id }}">Delete</a></td>
+                            <td>
+                                <form action="/admin/delete/{{ article.id }}" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this article?');">
+                                    <button type="submit" class="btn-link-red">Delete</button>
+                                </form>
+                            </td>
                         {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p>Nessun articolo disponibile.</p>
+        <p>No articles available.</p>
     {% endif %}
 {% endblock %}

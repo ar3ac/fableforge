@@ -2,31 +2,31 @@
     {
         "id": 1,
         "title": "Updated Title",
-        "content": "Python \u00e8 un linguaggio di programmazione interpretato, di alto livello e general-purpose. La sua filosofia di design enfatizza la leggibilit\u00e0 del codice con l'uso di un'indentazione significativa.",
+        "content": "Python is an interpreted, high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.",
         "date": "2023-10-15"
     },
     {
         "id": 2,
-        "title": "I benefici del REST API",
-        "content": "REST (Representational State Transfer) \u00e8 uno stile architetturale per sistemi ipermediali distribuiti. Permette una comunicazione scalabile tra client e server tramite protocollo HTTP.",
+        "title": "The Benefits of REST API",
+        "content": "REST (Representational State Transfer) is an architectural style for distributed hypermedia systems. It allows scalable communication between client and server via HTTP protocol.",
         "date": "2023-11-02"
     },
     {
         "id": 3,
-        "title": "Docker per Principianti",
-        "content": "Docker \u00e8 una piattaforma open source che automatizza il deployment delle applicazioni all'interno di contenitori software, fornendo un livello aggiuntivo di astrazione e automazione.",
+        "title": "Docker for Beginners",
+        "content": "Docker is an open source platform that automates the deployment of applications inside software containers, providing an additional layer of abstraction and automation.",
         "date": "2023-12-10"
     },
     {
         "id": 4,
         "title": "Machine Learning vs Deep Learning",
-        "content": "Sebbene spesso usati in modo intercambiabile, il Deep Learning \u00e8 un sottoinsieme del Machine Learning che utilizza reti neurali artificiali multistrato per risolvere problemi complessi.",
+        "content": "Although often used interchangeably, Deep Learning is a subset of Machine Learning that uses multi-layered artificial neural networks to solve complex problems.",
         "date": "2024-01-05"
     },
     {
         "id": 5,
-        "title": "Sicurezza nel Cloud",
-        "content": "La sicurezza nel cloud computing coinvolge una vasta gamma di policy, tecnologie e controlli distribuiti per proteggere dati, applicazioni e infrastrutture associate.",
+        "title": "Cloud Security",
+        "content": "Cloud computing security involves a broad set of policies, technologies, and controls deployed to protect data, applications, and the associated infrastructure.",
         "date": "2024-02-20"
     },
     {

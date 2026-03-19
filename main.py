@@ -11,6 +11,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from fastapi import FastAPI, Request, Form
 
+from datetime import datetime
+
 app = FastAPI(title="FableForge", version="1.0")
 templates = Jinja2Templates(directory="templates")
 
@@ -50,7 +52,7 @@ def login_post(request: Request, username: str = Form(...), password: str = Form
         "login.html",
         {
             "request": request,
-            "error": "Credenziali errate. Usa admin/password123.",
+            "error": "Invalid credentials. Use admin/password123.",
         },
         status_code=400,
     )
@@ -77,21 +79,80 @@ def admin_dashboard(request: Request):
     )
 
 
-@app.get("/admin/add")
-def admin_add(request: Request):
-    if not get_current_admin(request):
-        return RedirectResponse(url="/login", status_code=303)
-    return templates.TemplateResponse(
-        "login.html",
-        {
-            "request": request,
-            "error": "Placeholder: implementa qui la form per aggiungere articolo",
-        },
-    )
-
-
 @app.get("/logout")
 def logout(request: Request):
     response = RedirectResponse(url="/", status_code=303)
     response.delete_cookie("username", path="/")
     return response
+
+
+@app.get("/admin/new")
+def admin_new(request: Request):
+    if not get_current_admin(request):
+        return RedirectResponse(url="/login", status_code=303)
+    return templates.TemplateResponse(
+        "editor.html",
+        {
+            "request": request,
+        },
+    )
+
+
+@app.post("/admin/new")
+def admin_new_post(request: Request, title: str = Form(...), content: str = Form(...)):
+    if not get_current_admin(request):
+        return RedirectResponse(url="/login", status_code=303)
+    articles = load_articles()
+    new_id = max([a["id"] for a in articles], default=0) + 1
+    new_article = {
+        "id": new_id,
+        "title": title,
+        "content": content,
+        "date": datetime.now().strftime("%Y-%m-%d"),
+    }
+    add_article(new_article)
+    # redirect to home page after adding article
+    return RedirectResponse(url="/", status_code=303)
+
+
+@app.get("/admin/edit/{article_id}")
+def admin_edit(request: Request, article_id: int):
+    if not get_current_admin(request):
+        return RedirectResponse(url="/login", status_code=303)
+    article = get_article_by_id(article_id)
+    if article is None:
+        return {"error": "Article not found"}
+    return templates.TemplateResponse(
+        "editor.html",
+        {
+            "request": request,
+            "article": article,
+        },
+    )
+
+
+@app.post("/admin/edit/{article_id}")
+def admin_edit_post(
+    request: Request, article_id: int, title: str = Form(...), content: str = Form(...)
+):
+    if not get_current_admin(request):
+        return RedirectResponse(url="/login", status_code=303)
+    updated_data = {
+        "title": title,
+        "content": content,
+        "date": datetime.now().strftime("%Y-%m-%d"),
+    }
+    success = update_article(article_id, updated_data)
+    if not success:
+        return {"error": "Article not found"}
+    return RedirectResponse(url="/", status_code=303)
+
+
+@app.post("/admin/delete/{article_id}")
+def admin_delete(request: Request, article_id: int):
+    if not get_current_admin(request):
+        return RedirectResponse(url="/login", status_code=303)
+    success = delete_article(article_id)
+    if not success:
+        return {"error": "Article not found"}
+    return RedirectResponse(url="/", status_code=303)

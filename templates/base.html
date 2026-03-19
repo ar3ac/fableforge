@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,22 @@
         .error { color: red; }
         table a { color: #1f4b8f; text-decoration: none; padding: 0.28rem 0.55rem; border-radius: 4px; border: 1px solid transparent;}
         table a:hover { background: #eef4ff; border-color: #c8dbff; }
+
+        /* Style for buttons that look like red links (Delete) */
+        .btn-link-red {
+            background: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: inherit;
+            font-family: inherit;
+            color: #d32f2f; /* Rosso */
+            padding: 0.28rem 0.55rem;
+            border-radius: 4px;
+        }
+        .btn-link-red:hover {
+            background: #ffebee; /* Rosso chiarissimo */
+            border-color: #ffcdd2;
+        }
     </style>
 </head>
 <body>
@@ -25,7 +41,7 @@
         <a href="/">Home</a>
         {% if request.cookies.get("username") == "admin" %}
             <span class="admin-pill">Logged as Admin</span>
-            <a href="/admin/add">+ Add</a>
+            <a href="/admin/new">+ Add</a>
             <a href="/logout">Logout</a>
         {% else %}
             <a href="/login">Login</a>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Edit Article' if article else 'Create Article' }} - FableForge{% endblock %}
+
+{% block content %}
+<form method="post" action="{% if article %}/admin/edit/{{ article.id }}{% else %}/admin/new{% endif %}">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" value="{{ article.title if article else '' }}" required><br><br>
+    <label for="content">Content:</label><br>
+    <textarea id="content" name="content" rows="10" cols="50" required>{{ article.content if article else '' }}</textarea><br><br>
+    <input type="submit" value="{{ 'Update' if article else 'Create' }}">
+</form>
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+{% endblock %}
